@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Deteksi Sampah - Eco Innovation">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <title>Deteksi Sampah - Eco Innovation</title>
+</head>
+<body class="detect-page">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <span class="navbar-icon">♻</span>
+        <h1>Eco Innovation</h1>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link" data-section="home">Beranda</a></li>
+          <li><a href="#" class="nav-link active" data-section="detect">Deteksi</a></li>
+          <li><a href="history.html" class="nav-link" data-section="history">Riwayat</a></li>
+          <li><a href="map.html" class="nav-link" data-section="map">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="navbar-user" id="userMenu">
+        <button class="user-btn" id="userBtnToggle">👤 Akun</button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#" id="loginLink">Login/Register</a>
+          <a href="#" id="profileLink" style="display:none;">Profil</a>
+          <a href="#" id="logoutLink" style="display:none;">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <!-- Camera Section -->
+    <section class="detect-section">
+      <h2 class="section-title">Tangkap Sampah Anda</h2>
+
+      <div class="camera-container">
+        <video id="cameraFeed" class="camera-feed" playsinline autoplay></video>
+        <canvas id="captureCanvas" style="display:none;"></canvas>
+        <div class="camera-overlay" id="cameraOverlay">
+          <div class="center-marker"></div>
+          <p class="overlay-text">Arahkan ke sampah</p>
+        </div>
+      </div>
+
+      <!-- Camera Controls -->
+      <div class="camera-controls">
+        <button id="cameraBtnSwitch" class="btn btn-secondary" title="Ganti Kamera">
+          🔄 Ganti Kamera
+        </button>
+        <button id="captureBtn" class="btn btn-primary btn-lg" title="Ambil Foto">
+          📸 Tangkap
+        </button>
+        <button id="cameraReset" class="btn btn-secondary" title="Reset">
+          ↻ Reset
+        </button>
+      </div>
+
+      <!-- Permissions Status -->
+      <div id="permissionStatus" class="permission-status" style="display:none;">
+        <p id="permissionMessage"></p>
+        <button id="requestPermissionBtn" class="btn btn-primary">Izinkan Akses Kamera</button>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="resultsSection" style="display:none;">
+      <h2 class="section-title">Hasil Deteksi</h2>
+
+      <div class="result-card">
+        <div class="result-image">
+          <img id="resultImage" src="" alt="Captured waste">
+        </div>
+
+        <div class="result-content">
+          <div class="result-main">
+            <h3 id="wasteName" class="waste-name">-</h3>
+            <div class="result-confidence">
+              <div class="confidence-bar">
+                <div class="confidence-fill" id="confidenceFill"></div>
+              </div>
+              <span class="confidence-text" id="confidenceText">0%</span>
+            </div>
+          </div>
+
+          <!-- Waste Info Tabs -->
+          <div class="tabs">
+            <button class="tab-button active" data-tab="description">Deskripsi</button>
+            <button class="tab-button" data-tab="management">Pengelolaan</button>
+            <button class="tab-button" data-tab="recycling">Daur Ulang</button>
+            <button class="tab-button" data-tab="tips">Tips</button>
+          </div>
+
+          <div class="tab-content active" id="description-tab">
+            <p id="wasteDescription">-</p>
+          </div>
+
+          <div class="tab-content" id="management-tab">
+            <div id="wasteManagement">-</div>
+          </div>
+
+          <div class="tab-content" id="recycling-tab">
+            <div id="wasteRecycling">-</div>
+          </div>
+
+          <div class="tab-content" id="tips-tab">
+            <ul id="wasteTips">
+              <li>Loading...</li>
+            </ul>
+          </div>
+
+          <!-- Result Actions -->
+          <div class="result-actions">
+            <button id="saveHistoryBtn" class="btn btn-primary">💾 Simpan ke Riwayat</button>
+            <button id="shareResultBtn" class="btn btn-secondary">📤 Bagikan</button>
+            <button id="newDetectionBtn" class="btn btn-secondary">📷 Deteksi Lagi</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator" style="display:none;">
+      <div class="spinner"></div>
+      <p>Menganalisis sampah...</p>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message" style="display:none;">
+      <p id="errorText"></p>
+      <button class="btn btn-secondary" onclick="document.getElementById('errorMessage').style.display='none'">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-item" data-page="home">
+      <span class="bottom-nav-icon">🏠</span>
+      <span>Beranda</span>
+    </a>
+    <a href="#" class="bottom-nav-item active" data-page="detect">
+      <span class="bottom-nav-icon">📷</span>
+      <span>Deteksi</span>
+    </a>
+    <a href="history.html" class="bottom-nav-item" data-page="history">
+      <span class="bottom-nav-icon">📝</span>
+      <span>Riwayat</span>
+    </a>
+    <a href="map.html" class="bottom-nav-item" data-page="map">
+      <span class="bottom-nav-icon">📍</span>
+      <span>Peta</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.11.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/camera.js"></script>
+  <script src="js/detection.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

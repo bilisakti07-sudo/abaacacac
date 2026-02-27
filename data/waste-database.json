@@ -1,0 +1,189 @@
+[
+  {
+    "id": "plastic_bottle",
+    "name": "Botol Plastik",
+    "category": "Plastik",
+    "color": "#FF6B6B",
+    "icon": "🍾",
+    "description": "Botol plastik adalah wadah yang biasanya digunakan untuk minuman dan produk cair lainnya.",
+    "pengelolaan": "Sebelum membuang botol plastik, pastikan untuk mengosongkannya dan membersihkannya. Jangan campur dengan jenis sampah lainnya.",
+    "daur_ulang": "Botol plastik dapat didaur ulang menjadi bahan baku untuk produk plastik baru atau diubah menjadi kerajinan tangan.",
+    "tips": [
+      "Buang sisa minuman sebelum membuang",
+      "Cuci botol untuk menghilangkan sisa minuman",
+      "Pisahkan dari sampah lainnya",
+      "Jangan menghancurkan botol (lebih baik untuk didaur ulang)"
+    ],
+    "ml_labels": ["bottle", "plastic bottle", "water bottle", "cola bottle"]
+  },
+  {
+    "id": "plastic_bag",
+    "name": "Kantong Plastik",
+    "category": "Plastik",
+    "color": "#FF6B6B",
+    "icon": "🛍️",
+    "description": "Kantong plastik adalah wadah yang terbuat dari plastik dan biasanya digunakan untuk membawa barang belanja.",
+    "pengelolaan": "Simpan kantong plastik bekas untuk digunakan kembali. Jika sudah rusak, buang ke tempat sampah plastik.",
+    "daur_ulang": "Kantong plastik dapat digunakan kembali berkali-kali sebelum didaur ulang menjadi produk plastik baru.",
+    "tips": [
+      "Gunakan kembali kantong plastik sebelum membuangnya",
+      "Jika sobek, gunakan untuk sampah atau pot tanaman",
+      "Kumpulkan dan buang bersama sampah plastik lainnya",
+      "Pertimbangkan menggunakan kantong ramah lingkungan"
+    ],
+    "ml_labels": ["bag", "plastic bag", "shopping bag"]
+  },
+  {
+    "id": "aluminum_can",
+    "name": "Kaleng Aluminium",
+    "category": "Logam",
+    "color": "#A8DADC",
+    "icon": "🥫",
+    "description": "Kaleng aluminium adalah wadah metal yang sering digunakan untuk minuman kaleng dan produk sirup.",
+    "pengelolaan": "Jangan biarkan kaleng kosong menumpuk. Buang ke tempat sampah logam atau serah ke pengepul sampah.",
+    "daur_ulang": "Kaleng aluminium sangat mudah didaur ulang dan memiliki nilai ekonomis yang tinggi. Jangan sampai terkontaminasi sampah lainnya.",
+    "tips": [
+      "Buang sisa minuman dari kaleng",
+      "Jangan menghancurkan kaleng terlalu kecil",
+      "Pisahkan dari sampah lainnya",
+      "Serahkan ke pengepul sampah untuk mendapat uang"
+    ],
+    "ml_labels": ["can", "aluminum can", "tin can", "drink can"]
+  },
+  {
+    "id": "paper",
+    "name": "Kertas",
+    "category": "Kertas",
+    "color": "#FFD93D",
+    "icon": "📄",
+    "description": "Kertas adalah material yang terbuat dari serat alami dan digunakan untuk berbagai keperluan.",
+    "pengelolaan": "Kumpulkan kertas bekas di satu tempat dan jangan biarkan basah. Buang ke tempat sampah kertas.",
+    "daur_ulang": "Kertas dapat didaur ulang menjadi kertas baru dengan kualitas yang sedikit lebih rendah.",
+    "tips": [
+      "Jangan campur kertas basah dengan kertas kering",
+      "Pastikan kertas tidak terkontaminasi dengan sampah lainnya",
+      "Kumpulkan dalam satu wadah",
+      "Serahkan ke bank sampah atau pengepul kertas"
+    ],
+    "ml_labels": ["paper", "newspaper", "cardboard", "magazine"]
+  },
+  {
+    "id": "cardboard",
+    "name": "kardus",
+    "category": "Kertas",
+    "color": "#FFD93D",
+    "icon": "📦",
+    "description": "Kardus adalah material tebal yang terbuat dari kertas berlapis dan digunakan untuk pembungkus.",
+    "pengelolaan": "Patahkan kardus untuk menghemat tempat. Kumpulkan kardus bekas dan serahkan ke pengepul.",
+    "daur_ulang": "Kardus dapat didaur ulang menjadi kardus baru atau produk kertas lainnya.",
+    "tips": [
+      "Patahkan kardus untuk menghemat ruang",
+      "Pisahkan perekat dan lakban",
+      "Jangan campur dengan sampah lainnya",
+      "Jual ke pengepul untuk mendapat uang"
+    ],
+    "ml_labels": ["cardboard", "box", "package"]
+  },
+  {
+    "id": "glass_bottle",
+    "name": "Botol Kaca",
+    "category": "Kaca",
+    "color": "#4ECDC4",
+    "icon": "🥤",
+    "description": "Botol kaca adalah wadah transparan yang terbuat dari kaca dan sering digunakan untuk minuman.",
+    "pengelolaan": "Simpan botol kaca dengan hati-hati agar tidak pecah. Buang ke tempat sampah kaca terpisah.",
+    "daur_ulang": "Botol kaca dapat didaur ulang 100% menjadi botol kaca baru tanpa kehilangan kualitas.",
+    "tips": [
+      "Bersihkan botol sebelum membuang",
+      "Jangan mengisi sampah lain di dalam botol",
+      "Hati-hati saat membawanya agar tidak pecah",
+      "Jangan campur dengan sampah lainnya"
+    ],
+    "ml_labels": ["glass", "bottle", "glass bottle", "beer bottle"]
+  },
+  {
+    "id": "organic_waste",
+    "name": "Sampah Organik",
+    "category": "Organik",
+    "color": "#52B788",
+    "icon": "🌱",
+    "description": "Sampah organik adalah limbah dari makanan dan tumbuhan yang dapat terurai secara alami.",
+    "pengelolaan": "Pisahkan sampah organik dari sampah lainnya. Dapat dikompos atau dikhususkan untuk pembuat pupuk.",
+    "daur_ulang": "Sampah organik dapat dikompos menjadi pupuk alami yang bermanfaat untuk tanaman.",
+    "tips": [
+      "Jangan campur dengan sampah plastik atau logam",
+      "Potong menjadi potongan kecil agar lebih cepat terurai",
+      "Kompos di rumah jika memungkinkan",
+      "Serahkan ke tempat pengomposan komunitas"
+    ],
+    "ml_labels": ["food waste", "organic waste", "fruit", "vegetable", "leaf"]
+  },
+  {
+    "id": "electronics",
+    "name": "Sampah Elektronik",
+    "category": "Elektronik",
+    "color": "#457B9D",
+    "icon": "🔌",
+    "description": "Sampah elektronik adalah perangkat elektronik yang sudah tidak digunakan lagi.",
+    "pengelolaan": "Jangan buang elektronik ke tempat sampah biasa. Serahkan ke tempat khusus daur ulang elektronik.",
+    "daur_ulang": "Sampah elektronik mengandung logam berharga dan material yang dapat didaur ulang dengan teknologi khusus.",
+    "tips": [
+      "Jangan buang ke tempat sampah biasa",
+      "Kumpulkan di satu tempat aman",
+      "Serahkan ke toko elektronik atau pusat daur ulang",
+      "Data pribadi harus dihapus sebelum menyerahkan"
+    ],
+    "ml_labels": ["phone", "computer", "laptop", "electronic", "circuit board"]
+  },
+  {
+    "id": "metal_scrap",
+    "name": "Limbah Logam",
+    "category": "Logam",
+    "color": "#A8DADC",
+    "icon": "🧲",
+    "description": "Limbah logam adalah sisa-sisa material logam yang sudah tidak terpakai.",
+    "pengelolaan": "Kumpulkan limbah logam terpisah dari sampah lainnya. Jangan biarkan berkarat yang berlebihan.",
+    "daur_ulang": "Limbah logam dapat dipeleleh kembali dan dibentuk menjadi produk logam baru.",
+    "tips": [
+      "Pisahkan logam dari sampah lainnya",
+      "Jangan campur berbagai jenis logam",
+      "Serahkan ke pengepul logam atau scrap metal dealer",
+      "Lindungi dari hujan untuk menghindari karat berlebih"
+    ],
+    "ml_labels": ["metal", "scrap metal", "iron"]
+  },
+  {
+    "id": "textile_waste",
+    "name": "Limbah Tekstil",
+    "category": "Tekstil",
+    "color": "#95B8D1",
+    "icon": "👕",
+    "description": "Limbah tekstil adalah pakaian dan kain yang sudah tidak dipakai.",
+    "pengelolaan": "Pisahkan pakaian layak pakai untuk disumbangkan. Pakaian rusak dapat dikumpulkan untuk daur ulang.",
+    "daur_ulang": "Limbah tekstil dapat dibuat menjadi produk baru seperti tas, selimut, atau diolah menjadi serat untuk dike",
+    "tips": [
+      "Donasikan pakaian yang masih layak pakai",
+      "Kumpulkan pakaian rusak terpisah",
+      "Cari bank pakaian atau pusat daur ulang tekstil",
+      "Bisa dijahit ulang untuk keperluan lain"
+    ],
+    "ml_labels": ["clothes", "textile", "fabric", "shirt"]
+  },
+  {
+    "id": "rubber",
+    "name": "Ban Karet",
+    "category": "Karet",
+    "color": "#5A5A5A",
+    "icon": "🛞",
+    "description": "Ban karet adalah limbah dari kendaraan yang sudah tidak layak digunakan.",
+    "pengelolaan": "Jangan buang ban karet sembarangan. Serahkan ke bengkel atau pusat daur ulang khusus ban.",
+    "daur_ulang": "Ban karet dapat diubah menjadi berbagai produk seperti alas gym, pot tanaman, atau perkerasan jalan.",
+    "tips": [
+      "Serahkan ke bengkel saat mengganti ban",
+      "Cari pusat daur ulang ban lokal",
+      "Jangan bakar ban karet",
+      "Dapat digunakan untuk proyek DIY sebelum didaur ulang"
+    ],
+    "ml_labels": ["tyre", "tire", "rubber", "wheel"]
+  }
+]

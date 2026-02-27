@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eco Innovation - Aplikasi Deteksi Sampah Cerdas">
+  <meta name="theme-color" content="#10B981">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%2310B981' width='100' height='100' rx='20'/><text x='50' y='70' font-size='60' fill='white' text-anchor='middle'>♻</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <title>Eco Innovation - Deteksi Sampah Cerdas</title>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <span class="navbar-icon">♻</span>
+        <h1>Eco Innovation</h1>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active" data-section="home">Beranda</a></li>
+          <li><a href="detect.html" class="nav-link" data-section="detect">Deteksi</a></li>
+          <li><a href="history.html" class="nav-link" data-section="history">Riwayat</a></li>
+          <li><a href="map.html" class="nav-link" data-section="map">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="navbar-toggle" id="navbarToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="navbar-user" id="userMenu">
+        <button class="user-btn" id="userBtnToggle">👤 Akun</button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#" id="loginLink">Login/Register</a>
+          <a href="#" id="profileLink" style="display:none;">Profil</a>
+          <a href="#" id="logoutLink" style="display:none;">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2 class="hero-title">Deteksi Sampah Cerdas</h2>
+      <p class="hero-subtitle">Identifikasi jenis sampah dan dapatkan saran daur ulang yang tepat</p>
+      <a href="detect.html" class="btn btn-primary btn-lg">Mulai Deteksi</a>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-icons">
+        <span class="icon">🍾</span>
+        <span class="icon">📦</span>
+        <span class="icon">🌱</span>
+        <span class="icon">🧲</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Fitur Utama</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📷</div>
+        <h3>Deteksi Sampah</h3>
+        <p>Gunakan kamera smartphone untuk mengidentifikasi jenis sampah secara real-time dengan AI</p>
+        <a href="detect.html" class="card-link">Coba Sekarang →</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">♻️</div>
+        <h3>Panduan Daur Ulang</h3>
+        <p>Dapatkan rekomendasi cara terbaik untuk mendaur ulang dan mengelola sampah Anda</p>
+        <a href="detect.html" class="card-link">Pelajari Lebih →</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Riwayat Scan</h3>
+        <p>Simpan dan kelola semua riwayat pemindaian sampah Anda dengan statistik lengkap</p>
+        <a href="history.html" class="card-link">Lihat Riwayat →</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>Lokasi TPS Terdekat</h3>
+        <p>Temukan lokasi Tempat Pembuangan Sampah dan Bank Sampah terdekat dengan Anda</p>
+        <a href="map.html" class="card-link">Buka Peta →</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Statistik Pribadi</h3>
+        <p>Pantau kontribusi Anda terhadap lingkungan melalui dashboard statistik personal</p>
+        <a href="history.html" class="card-link">Lihat Statistik →</a>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Dampak Lingkungan</h3>
+        <p>Pahami dampak positif dari keputusan daur ulang Anda terhadap lingkungan</p>
+        <a href="#" class="card-link">Belajar Lebih →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works">
+    <h2 class="section-title">Cara Kerja</h2>
+    <div class="steps-container">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Ambil Foto</h3>
+        <p>Arahkan kamera ke sampah yang ingin dianalisis</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Deteksi AI</h3>
+        <p>Sistem AI mengidentifikasi jenis sampah secara otomatis</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Dapatkan Saran</h3>
+        <p>Terima panduan daur ulang dan pengelolaan yang tepat</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <h3>Simpan & Pantau</h3>
+        <p>Riwayat tersimpan untuk tracking contribusi Anda</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats">
+    <h2 class="section-title">Dampak Bersama</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="totalUsers">1,234</div>
+        <div class="stat-label">Pengguna Aktif</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="totalScans">12,567</div>
+        <div class="stat-label">Sampah Teridentifikasi</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="wasteRecycled">5.2 Ton</div>
+        <div class="stat-label">Sampah Didaur Ulang</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="co2Saved">12.4 Ton</div>
+        <div class="stat-label">CO₂ Tersimpan</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Mulai Berkontribusi Hari Ini</h2>
+      <p>Jadilah bagian dari gerakan global untuk pengelolaan sampah yang lebih baik</p>
+      <a href="detect.html" class="btn btn-primary btn-lg">Deteksi Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Tentang</h4>
+        <p>Eco Innovation adalah aplikasi cerdas untuk mengelola sampah dengan lebih baik melalui teknologi AI.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Link Cepat</h4>
+        <ul>
+          <li><a href="detect.html">Deteksi</a></li>
+          <li><a href="history.html">Riwayat</a></li>
+          <li><a href="map.html">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:info@ecoinnovation.com">Email</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Eco Innovation. Semua hak dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- Bottom Navigation for Mobile -->
+  <nav class="bottom-nav">
+    <a href="#" class="bottom-nav-item active" data-page="home">
+      <span class="bottom-nav-icon">🏠</span>
+      <span>Beranda</span>
+    </a>
+    <a href="detect.html" class="bottom-nav-item" data-page="detect">
+      <span class="bottom-nav-icon">📷</span>
+      <span>Deteksi</span>
+    </a>
+    <a href="history.html" class="bottom-nav-item" data-page="history">
+      <span class="bottom-nav-icon">📝</span>
+      <span>Riwayat</span>
+    </a>
+    <a href="map.html" class="bottom-nav-item" data-page="map">
+      <span class="bottom-nav-icon">📍</span>
+      <span>Peta</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/app.js"></script>
+
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('js/sw.js')
+        .then(registration => console.log('Service Worker registered'))
+        .catch(err => console.log('Service Worker registration failed:', err));
+    }
+  </script>
+</body>
+</html>

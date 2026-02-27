@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Peta TPS - Eco Innovation">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <title>Peta TPS & Bank Sampah - Eco Innovation</title>
+</head>
+<body class="map-page">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <span class="navbar-icon">♻</span>
+        <h1>Eco Innovation</h1>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link" data-section="home">Beranda</a></li>
+          <li><a href="detect.html" class="nav-link" data-section="detect">Deteksi</a></li>
+          <li><a href="history.html" class="nav-link" data-section="history">Riwayat</a></li>
+          <li><a href="#" class="nav-link active" data-section="map">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="navbar-user" id="userMenu">
+        <button class="user-btn" id="userBtnToggle">👤 Akun</button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#" id="loginLink">Login/Register</a>
+          <a href="#" id="profileLink" style="display:none;">Profil</a>
+          <a href="#" id="logoutLink" style="display:none;">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-container map-container">
+    <!-- Filter Section -->
+    <section class="map-filters">
+      <h2 class="section-title">Temukan TPS & Bank Sampah Terdekat</h2>
+      <div class="filter-controls">
+        <select id="locationTypeFilter" class="filter-select">
+          <option value="">Semua Jenis</option>
+          <option value="tps">Tempat Pembuangan Sampah (TPS)</option>
+          <option value="bank">Bank Sampah</option>
+          <option value="recycle">Pusat Daur Ulang</option>
+        </select>
+        <input type="number" id="radiusFilter" class="filter-input" placeholder="Radius (km)" min="1" max="50" value="5">
+        <button id="updateMapBtn" class="btn btn-primary">🔍 Cari</button>
+        <button id="getLocationBtn" class="btn btn-secondary">📍 Lokasi Saya</button>
+      </div>
+    </section>
+
+    <!-- Map Area -->
+    <div id="map" class="map-area"></div>
+
+    <!-- Location List (Side Panel) -->
+    <section class="location-list-section">
+      <h3>Lokasi Terdekat</h3>
+      <div id="locationList" class="location-list">
+        <div class="location-item">
+          <div class="location-loading">
+            <div class="spinner"></div>
+            <p>Memuat lokasi...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="error-message" style="display:none;">
+      <p id="errorText"></p>
+      <button class="btn btn-secondary" onclick="document.getElementById('errorMessage').style.display='none'">Tutup</button>
+    </div>
+  </div>
+
+  <!-- Location Detail Modal -->
+  <div id="locationModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div id="locationDetailContent">
+        <h3 id="modalLocationName">-</h3>
+        <div class="location-detail-info">
+          <p><strong>📍 Alamat:</strong> <span id="modalLocationAddress">-</span></p>
+          <p><strong>📞 Telepon:</strong> <span id="modalLocationPhone">-</span></p>
+          <p><strong>⏰ Jam Operasional:</strong> <span id="modalLocationHours">-</span></p>
+          <p><strong>📊 Jenis:</strong> <span id="modalLocationType">-</span></p>
+          <p><strong>⭐ Rating:</strong> <span id="modalLocationRating">-</span></p>
+          <p><strong>📏 Jarak:</strong> <span id="modalLocationDistance">-</span></p>
+        </div>
+        <div class="location-actions">
+          <button id="navigationBtn" class="btn btn-primary">🧭 Navigasi</button>
+          <button id="callBtn" class="btn btn-secondary">📞 Hubungi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-item" data-page="home">
+      <span class="bottom-nav-icon">🏠</span>
+      <span>Beranda</span>
+    </a>
+    <a href="detect.html" class="bottom-nav-item" data-page="detect">
+      <span class="bottom-nav-icon">📷</span>
+      <span>Deteksi</span>
+    </a>
+    <a href="history.html" class="bottom-nav-item" data-page="history">
+      <span class="bottom-nav-icon">📝</span>
+      <span>Riwayat</span>
+    </a>
+    <a href="#" class="bottom-nav-item active" data-page="map">
+      <span class="bottom-nav-icon">📍</span>
+      <span>Peta</span>
+    </a>
+  </nav>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

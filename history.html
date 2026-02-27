@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Riwayat Scan - Eco Innovation">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <title>Riwayat Scan - Eco Innovation</title>
+</head>
+<body class="history-page">
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand">
+        <span class="navbar-icon">♻</span>
+        <h1>Eco Innovation</h1>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link" data-section="home">Beranda</a></li>
+          <li><a href="detect.html" class="nav-link" data-section="detect">Deteksi</a></li>
+          <li><a href="#" class="nav-link active" data-section="history">Riwayat</a></li>
+          <li><a href="map.html" class="nav-link" data-section="map">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="navbar-user" id="userMenu">
+        <button class="user-btn" id="userBtnToggle">👤 Akun</button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#" id="loginLink">Login/Register</a>
+          <a href="#" id="profileLink" style="display:none;">Profil</a>
+          <a href="#" id="logoutLink" style="display:none;">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="page-container">
+    <!-- Statistics Section -->
+    <section class="statistics">
+      <h2 class="section-title">Statistik Pribadi</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-number" id="totalScansUser">0</div>
+          <div class="stat-label">Total Scan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">♻️</div>
+          <div class="stat-number" id="totalRecycled">0</div>
+          <div class="stat-label">Didaur Ulang</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌍</div>
+          <div class="stat-number" id="co2Saved">0</div>
+          <div class="stat-label">CO₂ Tersimpan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number" id="userLevel">Pemula</div>
+          <div class="stat-label">Level</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="filters-section">
+      <h3>Filter & Pencarian</h3>
+      <div class="filters-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Cari sampah...">
+        <select id="wasteTypeFilter" class="filter-select">
+          <option value="">Semua Kategori</option>
+          <option value="plastik">Plastik</option>
+          <option value="organik">Organik</option>
+          <option value="kertas">Kertas</option>
+          <option value="logam">Logam</option>
+          <option value="kaca">Kaca</option>
+          <option value="elektronik">Elektronik</option>
+        </select>
+        <select id="sortBy" class="filter-select">
+          <option value="newest">Terbaru</option>
+          <option value="oldest">Terlama</option>
+          <option value="alphabetical">A-Z</option>
+          <option value="highest-confidence">Akurasi Tertinggi</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- History List -->
+    <section class="history-section">
+      <div class="history-controls">
+        <h3>Riwayat Scan Anda</h3>
+        <div class="history-actions">
+          <button id="exportHistoryBtn" class="btn btn-secondary btn-sm">📥 Export</button>
+          <button id="deleteAllBtn" class="btn btn-danger btn-sm">🗑️ Hapus Semua</button>
+        </div>
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <div class="empty-icon">📭</div>
+        <h3>Belum Ada Riwayat</h3>
+        <p>Mulai deteksi sampah untuk melihat riwayat Anda</p>
+        <a href="detect.html" class="btn btn-primary">Mulai Deteksi</a>
+      </div>
+
+      <div id="historyList" class="history-list">
+        <!-- History items will be inserted here -->
+      </div>
+    </section>
+
+    <!-- Loading Indicator -->
+    <div id="loadingIndicator" class="loading-indicator" style="display:none;">
+      <div class="spinner"></div>
+      <p>Memuat riwayat...</p>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <a href="index.html" class="bottom-nav-item" data-page="home">
+      <span class="bottom-nav-icon">🏠</span>
+      <span>Beranda</span>
+    </a>
+    <a href="detect.html" class="bottom-nav-item" data-page="detect">
+      <span class="bottom-nav-icon">📷</span>
+      <span>Deteksi</span>
+    </a>
+    <a href="#" class="bottom-nav-item active" data-page="history">
+      <span class="bottom-nav-icon">📝</span>
+      <span>Riwayat</span>
+    </a>
+    <a href="map.html" class="bottom-nav-item" data-page="map">
+      <span class="bottom-nav-icon">📍</span>
+      <span>Peta</span>
+    </a>
+  </nav>
+
+  <!-- Modal for Detail View -->
+  <div id="detailModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

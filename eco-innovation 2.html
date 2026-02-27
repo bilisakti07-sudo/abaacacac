@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="description" content="Eco Innovation - Aplikasi Deteksi Sampah Cerdas dengan AI">
+  <meta name="theme-color" content="#10B981">
+  <title>Eco Innovation - Deteksi Sampah Cerdas</title>
+
+  <style>
+    /* ============================================
+       ECO INNOVATION - MAIN STYLES
+       ============================================ */
+
+    :root {
+      --primary-color: #10B981;
+      --primary-dark: #059669;
+      --primary-light: #D1FAE5;
+      --secondary-color: #3B82F6;
+      --danger-color: #EF4444;
+      --warning-color: #F59E0B;
+      --success-color: #10B981;
+      --neutral-50: #F9FAFB;
+      --neutral-100: #F3F4F6;
+      --neutral-200: #E5E7EB;
+      --neutral-300: #D1D5DB;
+      --neutral-400: #9CA3AF;
+      --neutral-500: #6B7280;
+      --neutral-600: #4B5563;
+      --neutral-700: #374151;
+      --neutral-800: #1F2937;
+      --neutral-900: #111827;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--neutral-50);
+      color: var(--neutral-900);
+      line-height: 1.6;
+      transition: var(--transition);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.125rem; }
+    h6 { font-size: 1rem; }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--neutral-600);
+    }
+
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      font-family: var(--font-sans);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background-color: var(--neutral-200);
+      color: var(--neutral-900);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--neutral-300);
+    }
+
+    .btn-danger {
+      background-color: var(--danger-color);
+      color: white;
+    }
+
+    .btn-danger:hover {
+      background-color: #DC2626;
+    }
+
+    .btn-lg {
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+    }
+
+    .btn-sm {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-icon:hover {
+      transform: scale(1.2);
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background: white;
+      border-bottom: 1px solid var(--neutral-200);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+
+    .navbar-icon {
+      font-size: 2rem;
+    }
+
+    .navbar-brand h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--neutral-600);
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem 0;
+      cursor: pointer;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-color);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.75rem;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .navbar-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.4rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .navbar-toggle span {
+      width: 1.5rem;
+      height: 2px;
+      background-color: var(--neutral-900);
+      transition: var(--transition);
+    }
+
+    .navbar-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(10px);
+    }
+
+    .navbar-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .navbar-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-10px);
+    }
+
+    .navbar-menu {
+      display: flex;
+      flex: 1;
+    }
+
+    .user-btn {
+      padding: 0.5rem 1rem;
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .user-btn:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .user-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow-lg);
+      display: none;
+      flex-direction: column;
+      min-width: 150px;
+      z-index: 100;
+      margin-top: 0.5rem;
+    }
+
+    .user-dropdown.active {
+      display: flex;
+    }
+
+    .user-dropdown a {
+      padding: 0.75rem 1rem;
+      color: var(--neutral-600);
+      border-bottom: 1px solid var(--neutral-100);
+      cursor: pointer;
+    }
+
+    .user-dropdown a:last-child {
+      border-bottom: none;
+    }
+
+    .user-dropdown a:hover {
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+    }
+
+    /* Page Container */
+    .page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      min-height: calc(100vh - 200px);
+      display: none;
+    }
+
+    .page-container.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-bottom: 4rem;
+      padding: 3rem;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+      border-radius: 1rem;
+      border: 1px solid var(--neutral-200);
+    }
+
+    .hero-content h2 {
+      margin-bottom: 1rem;
+      color: var(--neutral-900);
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: var(--neutral-600);
+      margin-bottom: 2rem;
+    }
+
+    .floating-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .floating-icons .icon {
+      font-size: 3rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .floating-icons .icon:nth-child(2) { animation-delay: 0.5s; }
+    .floating-icons .icon:nth-child(3) { animation-delay: 1s; }
+    .floating-icons .icon:nth-child(4) { animation-delay: 1.5s; }
+
+    /* Section Title */
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      font-size: 2rem;
+      color: var(--neutral-900);
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 2px;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .feature-card:nth-child(1) { animation-delay: 0.1s; }
+    .feature-card:nth-child(2) { animation-delay: 0.2s; }
+    .feature-card:nth-child(3) { animation-delay: 0.3s; }
+    .feature-card:nth-child(4) { animation-delay: 0.4s; }
+    .feature-card:nth-child(5) { animation-delay: 0.5s; }
+    .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary-color);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.75rem;
+      color: var(--neutral-900);
+    }
+
+    .feature-card p {
+      color: var(--neutral-600);
+      margin-bottom: 1.5rem;
+    }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary-color);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .card-link:hover {
+      transform: translateX(5px);
+    }
+
+    /* Steps */
+    .steps-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .step {
+      background: white;
+      border: 2px solid var(--primary-color);
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 200px;
+      text-align: center;
+      flex-shrink: 0;
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .step:nth-child(1) { animation-delay: 0.1s; }
+    .step:nth-child(3) { animation-delay: 0.2s; }
+    .step:nth-child(5) { animation-delay: 0.3s; }
+    .step:nth-child(7) { animation-delay: 0.4s; }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .step h3 {
+      color: var(--neutral-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .step-arrow {
+      font-size: 2rem;
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      animation: scaleIn 0.5s ease-out forwards;
+    }
+
+    .stat-card:nth-child(1) { animation-delay: 0.1s; }
+    .stat-card:nth-child(2) { animation-delay: 0.2s; }
+    .stat-card:nth-child(3) { animation-delay: 0.3s; }
+    .stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+    .stat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .stat-number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: var(--neutral-600);
+      font-size: 0.9rem;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 4rem 2rem;
+      border-radius: 1rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .cta-content h2 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .cta-content p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Camera Section */
+    .camera-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px;
+      margin: 2rem auto;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: #000;
+      aspect-ratio: 9/16;
+    }
+
+    video, #cameraFeed {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+      object-fit: cover;
+    }
+
+    .camera-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .center-marker {
+      width: 200px;
+      height: 200px;
+      border: 3px solid rgba(16, 185, 129, 0.5);
+      border-radius: 1rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .overlay-text {
+      color: white;
+      margin-top: 1rem;
+      font-weight: 600;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .camera-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Results */
+    .results-section {
+      display: none;
+      margin-top: 2rem;
+      animation: scaleIn 0.4s ease-out;
+    }
+
+    .results-section.show {
+      display: block;
+    }
+
+    .result-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .result-image {
+      border-radius: 1rem;
+      overflow: hidden;
+      background: #f3f4f6;
+    }
+
+    .result-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .result-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .waste-name {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .result-confidence {
+      margin-bottom: 1.5rem;
+    }
+
+    .confidence-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--neutral-200);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+      border-radius: 4px;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .confidence-text {
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--neutral-200);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+    }
+
+    .tab-button {
+      padding: 0.75rem 1.5rem;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--neutral-600);
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .tab-button.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+    }
+
+    .tab-button:hover {
+      color: var(--primary-dark);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .result-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* History */
+    .history-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .history-item {
+      background: white;
+      border: 1px solid var(--neutral-200);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      animation: fadeInUp 0.4s ease-out;
+    }
+
+    .history-item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-color);
+    }
+
+    .history-item-image {
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      background: #f3f4f6;
+    }
+
+    .history-item-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .history-item-content {
+      padding: 1rem;
+    }
+
+    .history-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .history-item-title {
+      margin: 0;
+      color: var(--neutral-900);
+      font-size: 1.125rem;
+    }
+
+    .history-item-confidence {
+      background: #dbeafe;
+      color: #0c4a6e;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    .history-item-meta {
+      display: flex;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+    }
+
+    .history-item-category {
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .history-item-date {
+      color: var(--neutral-600);
+    }
+
+    /* Filters */
+    .filters-section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filters-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .search-input, .filter-select, .filter-input {
+      padding: 0.75rem;
+      border: 1px solid var(--neutral-200);
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-family: var(--font-sans);
+    }
+
+    .search-input:focus, .filter-select:focus, .filter-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    /* Map */
+    .map-area {
+      width: 100%;
+      height: 600px;
+      border-radius: 1rem;
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 2rem;
+      background: #f3f4f6;
+    }
+
+    .location-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .location-item {
+      padding: 1rem;
+      border: 1px solid var(--neutral-200);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      gap: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .location-item:hover {
+      border-color: var(--primary-color);
+      background: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    .location-number {
+      min-width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+
+    .location-info {
+      flex: 1;
+    }
+
+    .location-info h4 {
+      margin: 0 0 0.25rem 0;
+      color: var(--neutral-900);
+    }
+
+    .location-info p {
+      margin: 0.25rem 0;
+      color: var(--neutral-600);
+      font-size: 0.875rem;
+    }
+
+    .location-type {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--neutral-900);
+      color: white;
+      padding: 3rem 1.5rem 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-section h4 {
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: var(--transition);
+    }
+
+    .footer-section a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--neutral-700);
+      color: rgba(255, 255, 255, 0.6);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Bottom Navigation */
+    .bottom-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      border-top: 1px solid var(--neutral-200);
+      flex-direction: row;
+      justify-content: space-around;
+      z-index: 999;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .bottom-nav.active {
+      display: flex;
+    }
+
+    .bottom-nav-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.5rem;
+      color: var(--neutral-600);
+      flex: 1;
+      text-align: center;
+      font-size: 0.75rem;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .bottom-nav-item:hover,
+    .bottom-nav-item.active {
+      color: var(--primary-color);
+    }
+
+    .bottom-nav-icon {
+      font-size: 1.5rem;
+    }
+
+    /* Loading & Errors */
+    .loading-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      gap: 1rem;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--neutral-200);
+      border-top-color: var(--primary-color);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .error-message {
+      background-color: #FEE2E2;
+      border: 1px solid var(--danger-color);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: var(--danger-color);
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .error-message p {
+      margin-bottom: 0.5rem;
+    }
+
+    .warning-message {
+      background-color: #FEF3C7;
+      border: 1px solid var(--warning-color);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      color: #92400e;
+      display: none;
+    }
+
+    .warning-message.show {
+      display: block;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--neutral-600);
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      color: var(--danger-color);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      display: none;
+    }
+
+    .empty-state.show {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .empty-state h3 {
+      color: var(--neutral-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state p {
+      color: var(--neutral-600);
+      margin-bottom: 2rem;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .navbar-brand h1 {
+        display: none;
+      }
+
+      .nav-list {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 2rem;
+        gap: 2rem;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .result-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding-bottom: 80px;
+      }
+
+      .navbar-container {
+        padding: 1rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+      }
+
+      .navbar-toggle {
+        display: flex;
+      }
+
+      .navbar-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-bottom: 1px solid var(--neutral-200);
+        flex-direction: column;
+        padding: 1rem;
+        border-top: 1px solid var(--neutral-200);
+        width: 100%;
+      }
+
+      .navbar-menu.active {
+        display: flex;
+      }
+
+      .nav-list {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav-link {
+        padding: 0.75rem 0;
+        display: block;
+      }
+
+      .nav-link.active::after {
+        display: none;
+      }
+
+      .page-container {
+        padding: 1rem;
+        min-height: calc(100vh - 160px);
+        padding-bottom: 5rem;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-title {
+        font-size: 1.75rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+
+      .steps-container {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .step {
+        width: 100%;
+      }
+
+      .step-arrow {
+        display: none;
+      }
+
+      .bottom-nav {
+        display: flex;
+      }
+
+      .result-card {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+
+      .result-actions {
+        flex-direction: column;
+      }
+
+      .filters-container {
+        grid-template-columns: 1fr;
+      }
+
+      .history-list {
+        grid-template-columns: 1fr;
+      }
+
+      .location-list {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta {
+        padding: 2rem 1rem;
+      }
+
+      .cta-content h2 {
+        font-size: 1.5rem;
+      }
+
+      .modal-content {
+        width: 95%;
+      }
+
+      .camera-container {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .page-container {
+        padding: 1rem 0.75rem;
+      }
+
+      h1 { font-size: 1.75rem; }
+      h2 { font-size: 1.5rem; }
+      h3 { font-size: 1.25rem; }
+
+      .floating-icons .icon {
+        font-size: 1.75rem;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+        width: 100%;
+      }
+
+      .result-card {
+        padding: 1rem;
+      }
+
+      .map-area {
+        height: 400px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-brand" onclick="switchPage('home')">
+        <span class="navbar-icon">♻</span>
+        <h1>Eco Innovation</h1>
+      </div>
+      <div class="navbar-menu" id="navbarMenu">
+        <ul class="nav-list">
+          <li><a class="nav-link active" onclick="switchPage('home')">Beranda</a></li>
+          <li><a class="nav-link" onclick="switchPage('detect')">Deteksi</a></li>
+          <li><a class="nav-link" onclick="switchPage('history')">Riwayat</a></li>
+          <li><a class="nav-link" onclick="switchPage('map')">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="navbar-toggle" id="navbarToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div style="position: relative;">
+        <button class="user-btn" id="userBtnToggle">👤 Akun</button>
+        <div class="user-dropdown" id="userDropdown">
+          <a onclick="showLoginModal()">Login/Register</a>
+          <a id="profileLink" style="display:none;" onclick="showProfileModal()">Profil</a>
+          <a id="logoutLink" style="display:none;" onclick="logoutUser()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HTTPS WARNING FOR ANDROID -->
+  <div id="httpsWarning" class="warning-message">
+    <p>⚠️ <strong>Perhatian:</strong> Untuk kamera berfungsi di HP Android, aplikasi harus diakses melalui HTTPS atau localhost. Jika mengakses dari IP (192.168.x.x), silakan deploy ke server HTTPS.</p>
+  </div>
+
+  <!-- HOME PAGE -->
+  <div class="page-container active" id="home-page">
+    <section class="hero">
+      <div class="hero-content">
+        <h2 class="hero-title">Deteksi Sampah Cerdas</h2>
+        <p class="hero-subtitle">Identifikasi jenis sampah dan dapatkan saran daur ulang yang tepat</p>
+        <button class="btn btn-primary btn-lg" onclick="switchPage('detect')">Mulai Deteksi</button>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-icons">
+          <span class="icon">🍾</span>
+          <span class="icon">📦</span>
+          <span class="icon">🌱</span>
+          <span class="icon">🧲</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Fitur Utama</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📷</div>
+          <h3>Deteksi Sampah</h3>
+          <p>Gunakan kamera smartphone untuk mengidentifikasi jenis sampah secara real-time dengan AI</p>
+          <a class="card-link" onclick="switchPage('detect')">Coba Sekarang →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">♻️</div>
+          <h3>Panduan Daur Ulang</h3>
+          <p>Dapatkan rekomendasi cara terbaik untuk mendaur ulang dan mengelola sampah Anda</p>
+          <a class="card-link" onclick="switchPage('detect')">Pelajari Lebih →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📝</div>
+          <h3>Riwayat Scan</h3>
+          <p>Simpan dan kelola semua riwayat pemindaian sampah Anda dengan statistik lengkap</p>
+          <a class="card-link" onclick="switchPage('history')">Lihat Riwayat →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📍</div>
+          <h3>Lokasi TPS Terdekat</h3>
+          <p>Temukan lokasi Tempat Pembuangan Sampah dan Bank Sampah terdekat dengan Anda</p>
+          <a class="card-link" onclick="switchPage('map')">Buka Peta →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Statistik Pribadi</h3>
+          <p>Pantau kontribusi Anda terhadap lingkungan melalui dashboard statistik personal</p>
+          <a class="card-link" onclick="switchPage('history')">Lihat Statistik →</a>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Dampak Lingkungan</h3>
+          <p>Pahami dampak positif dari keputusan daur ulang Anda terhadap lingkungan</p>
+          <a class="card-link">Belajar Lebih →</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Cara Kerja</h2>
+      <div class="steps-container">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Ambil Foto</h3>
+          <p>Arahkan kamera ke sampah yang ingin dianalisis</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Deteksi AI</h3>
+          <p>Sistem AI mengidentifikasi jenis sampah secara otomatis</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Dapatkan Saran</h3>
+          <p>Terima panduan daur ulang dan pengelolaan yang tepat</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Simpan & Pantau</h3>
+          <p>Riwayat tersimpan untuk tracking kontribusi Anda</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Dampak Bersama</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number">1,234</div>
+          <div class="stat-label">Pengguna Aktif</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">♻️</div>
+          <div class="stat-number">12,567</div>
+          <div class="stat-label">Sampah Teridentifikasi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌱</div>
+          <div class="stat-number">5.2 Ton</div>
+          <div class="stat-label">Sampah Didaur Ulang</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">💨</div>
+          <div class="stat-number">12.4 Ton</div>
+          <div class="stat-label">CO₂ Tersimpan</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-content">
+        <h2>Mulai Berkontribusi Hari Ini</h2>
+        <p>Jadilah bagian dari gerakan global untuk pengelolaan sampah yang lebih baik</p>
+        <button class="btn btn-primary btn-lg" onclick="switchPage('detect')">Deteksi Sekarang</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- DETECT PAGE -->
+  <div class="page-container" id="detect-page">
+    <h2 class="section-title">Tangkap Sampah Anda</h2>
+
+    <div class="camera-container">
+      <video id="cameraFeed" playsinline autoplay muted webkit-playsinline></video>
+      <div class="camera-overlay" id="cameraOverlay">
+        <div class="center-marker"></div>
+        <p class="overlay-text">Arahkan ke sampah</p>
+      </div>
+    </div>
+
+    <div class="camera-controls">
+      <button id="cameraBtnSwitch" class="btn btn-secondary" onclick="switchCamera()">🔄 Ganti Kamera</button>
+      <button id="captureBtn" class="btn btn-primary btn-lg" onclick="captureImage()">📸 Tangkap</button>
+      <button id="cameraReset" class="btn btn-secondary" onclick="resetDetection()">↻ Reset</button>
+    </div>
+
+    <div id="permissionStatus" class="error-message">
+      <p id="permissionMessage">Aplikasi memerlukan akses ke kamera untuk mendeteksi sampah.</p>
+      <button class="btn btn-primary" onclick="requestCameraPermission()">Izinkan Akses Kamera</button>
+    </div>
+
+    <div id="resultsSection" style="display:none;">
+      <h2 class="section-title">Hasil Deteksi</h2>
+      <div class="result-card">
+        <div class="result-image">
+          <img id="resultImage" src="" alt="Captured waste">
+        </div>
+
+        <div class="result-content">
+          <div>
+            <h3 id="wasteName" class="waste-name">-</h3>
+            <div class="result-confidence">
+              <div class="confidence-bar">
+                <div class="confidence-fill" id="confidenceFill"></div>
+              </div>
+              <span class="confidence-text" id="confidenceText">0%</span>
+            </div>
+          </div>
+
+          <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('description')">Deskripsi</button>
+            <button class="tab-button" onclick="switchTab('management')">Pengelolaan</button>
+            <button class="tab-button" onclick="switchTab('recycling')">Daur Ulang</button>
+            <button class="tab-button" onclick="switchTab('tips')">Tips</button>
+          </div>
+
+          <div class="tab-content active" id="description-tab">
+            <p id="wasteDescription">-</p>
+          </div>
+
+          <div class="tab-content" id="management-tab">
+            <div id="wasteManagement">-</div>
+          </div>
+
+          <div class="tab-content" id="recycling-tab">
+            <div id="wasteRecycling">-</div>
+          </div>
+
+          <div class="tab-content" id="tips-tab">
+            <ul id="wasteTips">
+              <li>Loading...</li>
+            </ul>
+          </div>
+
+          <div class="result-actions">
+            <button class="btn btn-primary" onclick="saveHistory()">💾 Simpan ke Riwayat</button>
+            <button class="btn btn-secondary" onclick="shareResult()">📤 Bagikan</button>
+            <button class="btn btn-secondary" onclick="resetDetection()">📷 Deteksi Lagi</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="loadingIndicator" class="loading-indicator" style="display:none;">
+      <div class="spinner"></div>
+      <p id="loadingText">Menganalisis sampah...</p>
+    </div>
+
+    <div id="errorMessage" class="error-message"></div>
+  </div>
+
+  <!-- HISTORY PAGE -->
+  <div class="page-container" id="history-page">
+    <section>
+      <h2 class="section-title">Statistik Pribadi</h2>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📊</div>
+          <div class="stat-number" id="totalScansUser">0</div>
+          <div class="stat-label">Total Scan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">♻️</div>
+          <div class="stat-number" id="totalRecycled">0</div>
+          <div class="stat-label">Didaur Ulang</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🌍</div>
+          <div class="stat-number" id="co2Saved">0 kg</div>
+          <div class="stat-label">CO₂ Tersimpan</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🏆</div>
+          <div class="stat-number" id="userLevel">Pemula</div>
+          <div class="stat-label">Level</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="filters-section">
+      <h3>Filter & Pencarian</h3>
+      <div class="filters-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Cari sampah..." onkeyup="searchHistory()">
+        <select id="wasteTypeFilter" class="filter-select" onchange="filterByType()">
+          <option value="">Semua Kategori</option>
+          <option value="Plastik">Plastik</option>
+          <option value="Organik">Organik</option>
+          <option value="Kertas">Kertas</option>
+          <option value="Logam">Logam</option>
+          <option value="Kaca">Kaca</option>
+          <option value="Elektronik">Elektronik</option>
+        </select>
+        <select id="sortBy" class="filter-select" onchange="sortHistory()">
+          <option value="newest">Terbaru</option>
+          <option value="oldest">Terlama</option>
+          <option value="alphabetical">A-Z</option>
+          <option value="highest-confidence">Akurasi Tertinggi</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h3>Riwayat Scan Anda</h3>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-secondary btn-sm" onclick="exportHistory()">📥 Export</button>
+          <button class="btn btn-danger btn-sm" onclick="deleteAllHistory()">🗑️ Hapus Semua</button>
+        </div>
+      </div>
+
+      <div id="emptyState" class="empty-state show">
+        <div class="empty-icon">📭</div>
+        <h3>Belum Ada Riwayat</h3>
+        <p>Mulai deteksi sampah untuk melihat riwayat Anda</p>
+        <button class="btn btn-primary" onclick="switchPage('detect')">Mulai Deteksi</button>
+      </div>
+
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <div id="detailModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="this.closest('.modal').classList.remove('show')">&times;</button>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP PAGE -->
+  <div class="page-container" id="map-page">
+    <section>
+      <h2 class="section-title">Temukan TPS & Bank Sampah Terdekat</h2>
+      <div class="filters-container" style="margin-bottom: 2rem;">
+        <select id="locationTypeFilter" class="filter-select">
+          <option value="">Semua Jenis</option>
+          <option value="tps">Tempat Pembuangan Sampah (TPS)</option>
+          <option value="bank">Bank Sampah</option>
+          <option value="recycle">Pusat Daur Ulang</option>
+        </select>
+        <input type="number" id="radiusFilter" class="filter-input" placeholder="Radius (km)" min="1" max="50" value="5">
+        <button class="btn btn-primary" onclick="updateMap()">🔍 Cari</button>
+        <button class="btn btn-secondary" onclick="getLocationAndShowMap()">📍 Lokasi Saya</button>
+      </div>
+    </section>
+
+    <div id="map" class="map-area"></div>
+
+    <section>
+      <h3>Lokasi Terdekat</h3>
+      <div id="locationList" class="location-list">
+        <div style="text-align: center; padding: 2rem;">
+          <div class="spinner"></div>
+          <p>Memuat lokasi...</p>
+        </div>
+      </div>
+    </section>
+
+    <div id="locationModal" class="modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="this.closest('.modal').classList.remove('show')">&times;</button>
+        <h3 id="modalLocationName">-</h3>
+        <div style="padding: 1rem 0;">
+          <p><strong>📍 Alamat:</strong> <span id="modalLocationAddress">-</span></p>
+          <p><strong>📞 Telepon:</strong> <span id="modalLocationPhone">-</span></p>
+          <p><strong>⏰ Jam Operasional:</strong> <span id="modalLocationHours">-</span></p>
+          <p><strong>📊 Jenis:</strong> <span id="modalLocationType">-</span></p>
+          <p><strong>⭐ Rating:</strong> <span id="modalLocationRating">-</span></p>
+          <p><strong>📏 Jarak:</strong> <span id="modalLocationDistance">-</span></p>
+        </div>
+        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+          <button class="btn btn-primary" onclick="navigateToLocation()">🧭 Navigasi</button>
+          <button class="btn btn-secondary" id="callBtn" onclick="callLocation()">📞 Hubungi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav active">
+    <a class="bottom-nav-item active" onclick="switchPage('home')">
+      <span class="bottom-nav-icon">🏠</span>
+      <span>Beranda</span>
+    </a>
+    <a class="bottom-nav-item" onclick="switchPage('detect')">
+      <span class="bottom-nav-icon">📷</span>
+      <span>Deteksi</span>
+    </a>
+    <a class="bottom-nav-item" onclick="switchPage('history')">
+      <span class="bottom-nav-icon">📝</span>
+      <span>Riwayat</span>
+    </a>
+    <a class="bottom-nav-item" onclick="switchPage('map')">
+      <span class="bottom-nav-icon">📍</span>
+      <span>Peta</span>
+    </a>
+  </nav>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Tentang</h4>
+        <p>Eco Innovation adalah aplikasi cerdas untuk mengelola sampah dengan lebih baik melalui teknologi AI.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Link Cepat</h4>
+        <ul>
+          <li><a onclick="switchPage('detect')">Deteksi</a></li>
+          <li><a onclick="switchPage('history')">Riwayat</a></li>
+          <li><a onclick="switchPage('map')">Peta TPS</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Kontak</h4>
+        <ul>
+          <li><a href="mailto:info@ecoinnovation.com">Email</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Eco Innovation. Semua hak dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ============================================
+    // WASTE DATABASE (EMBEDDED)
+    // ============================================
+    const WASTE_DATABASE = [
+      {
+        "id": "plastic_bottle",
+        "name": "Botol Plastik",
+        "category": "Plastik",
+        "color": "#FF6B6B",
+        "icon": "🍾",
+        "description": "Botol plastik adalah wadah yang biasanya digunakan untuk minuman dan produk cair lainnya.",
+        "pengelolaan": "Sebelum membuang botol plastik, pastikan untuk mengosongkannya dan membersihkannya. Jangan campur dengan jenis sampah lainnya.",
+        "daur_ulang": "Botol plastik dapat didaur ulang menjadi bahan baku untuk produk plastik baru atau diubah menjadi kerajinan tangan.",
+        "tips": [
+          "Buang sisa minuman sebelum membuang",
+          "Cuci botol untuk menghilangkan sisa minuman",
+          "Pisahkan dari sampah lainnya",
+          "Jangan menghancurkan botol (lebih baik untuk didaur ulang)"
+        ],
+        "ml_labels": ["bottle", "plastic bottle", "water bottle"]
+      },
+      {
+        "id": "aluminum_can",
+        "name": "Kaleng Aluminium",
+        "category": "Logam",
+        "color": "#A8DADC",
+        "icon": "🥫",
+        "description": "Kaleng aluminium adalah wadah metal yang sering digunakan untuk minuman kaleng dan produk sirup.",
+        "pengelolaan": "Jangan biarkan kaleng kosong menumpuk. Buang ke tempat sampah logam atau serah ke pengepul sampah.",
+        "daur_ulang": "Kaleng aluminium sangat mudah didaur ulang dan memiliki nilai ekonomis yang tinggi.",
+        "tips": [
+          "Buang sisa minuman dari kaleng",
+          "Pisahkan dari sampah lainnya",
+          "Serahkan ke pengepul sampah untuk mendapat uang"
+        ],
+        "ml_labels": ["can", "aluminum can"]
+      },
+      {
+        "id": "paper",
+        "name": "Kertas",
+        "category": "Kertas",
+        "color": "#FFD93D",
+        "icon": "📄",
+        "description": "Kertas adalah material yang terbuat dari serat alami dan digunakan untuk berbagai keperluan.",
+        "pengelolaan": "Kumpulkan kertas bekas di satu tempat dan jangan biarkan basah. Buang ke tempat sampah kertas.",
+        "daur_ulang": "Kertas dapat didaur ulang menjadi kertas baru dengan kualitas yang sedikit lebih rendah.",
+        "tips": [
+          "Jangan campur kertas basah dengan kertas kering",
+          "Kumpulkan dalam satu wadah",
+          "Serahkan ke bank sampah atau pengepul kertas"
+        ],
+        "ml_labels": ["paper", "newspaper"]
+      },
+      {
+        "id": "glass",
+        "name": "Kaca",
+        "category": "Kaca",
+        "color": "#4ECDC4",
+        "icon": "🥤",
+        "description": "Kaca adalah material yang dapat didaur ulang tanpa kehilangan kualitas.",
+        "pengelolaan": "Simpan kaca dengan hati-hati agar tidak pecah. Buang ke tempat sampah kaca terpisah.",
+        "daur_ulang": "Kaca dapat didaur ulang 100% menjadi kaca baru tanpa kehilangan kualitas.",
+        "tips": [
+          "Bersihkan sebelum membuang",
+          "Hati-hati agar tidak pecah",
+          "Jangan campur dengan sampah lainnya"
+        ],
+        "ml_labels": ["glass", "bottle"]
+      },
+      {
+        "id": "organic",
+        "name": "Sampah Organik",
+        "category": "Organik",
+        "color": "#52B788",
+        "icon": "🌱",
+        "description": "Sampah organik adalah limbah dari makanan dan tumbuhan yang dapat terurai secara alami.",
+        "pengelolaan": "Pisahkan sampah organik dari sampah lainnya. Dapat dikompos atau dikhususkan untuk pembuat pupuk.",
+        "daur_ulang": "Sampah organik dapat dikompos menjadi pupuk alami yang bermanfaat untuk tanaman.",
+        "tips": [
+          "Jangan campur dengan sampah plastik atau logam",
+          "Potong menjadi potongan kecil untuk cepat terurai",
+          "Kompos di rumah jika memungkinkan"
+        ],
+        "ml_labels": ["food", "organic", "vegetable", "fruit"]
+      },
+      {
+        "id": "electronics",
+        "name": "Sampah Elektronik",
+        "category": "Elektronik",
+        "color": "#457B9D",
+        "icon": "🔌",
+        "description": "Sampah elektronik adalah perangkat elektronik yang sudah tidak digunakan lagi.",
+        "pengelolaan": "Jangan buang elektronik ke tempat sampah biasa. Serahkan ke tempat khusus daur ulang elektronik.",
+        "daur_ulang": "Sampah elektronik mengandung logam berharga dan material yang dapat didaur ulang dengan teknologi khusus.",
+        "tips": [
+          "Jangan buang ke tempat sampah biasa",
+          "Kumpulkan di satu tempat aman",
+          "Serahkan ke pusat daur ulang elektronik"
+        ],
+        "ml_labels": ["phone", "computer", "electronic"]
+      }
+    ];
+
+    // ============================================
+    // UTILITY FUNCTIONS
+    // ============================================
+
+    function showLoading(message = 'Loading...') {
+      const loader = document.getElementById('loadingIndicator');
+      if (loader) {
+        loader.style.display = 'flex';
+        const text = loader.querySelector('#loadingText');
+        if (text) text.textContent = message;
+      }
+    }
+
+    function hideLoading() {
+      const loader = document.getElementById('loadingIndicator');
+      if (loader) loader.style.display = 'none';
+    }
+
+    function showError(message, duration = 5000) {
+      const errorDiv = document.getElementById('errorMessage');
+      if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.classList.add('show');
+        if (duration > 0) {
+          setTimeout(() => {
+            errorDiv.classList.remove('show');
+          }, duration);
+        }
+      }
+    }
+
+    function showSuccess(message, duration = 3000) {
+      alert(message);
+    }
+
+    function formatDate(date, format = 'short') {
+      if (typeof date === 'string') {
+        date = new Date(date);
+      }
+      const options = format === 'time'
+        ? { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }
+        : { year: 'numeric', month: '2-digit', day: '2-digit' };
+      return new Intl.DateTimeFormat('id-ID', options).format(date);
+    }
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+      const R = 6371;
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    function generateUUID() {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        const r = Math.random() * 16 | 0;
+        return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+      });
+    }
+
+    function exportToJSON(data, filename = 'data.json') {
+      const json = JSON.stringify(data, null, 2);
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    function isHTTPS() {
+      return window.location.protocol === 'https:';
+    }
+
+    function isLocalhost() {
+      return window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    }
+
+    // ============================================
+    // PAGE NAVIGATION
+    // ============================================
+
+    function switchPage(pageName) {
+      // Hide all pages
+      document.querySelectorAll('.page-container').forEach(page => {
+        page.classList.remove('active');
+      });
+
+      // Show selected page
+      const page = document.getElementById(`${pageName}-page`);
+      if (page) page.classList.add('active');
+
+      // Update nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      event?.target?.classList.add('active');
+
+      // Update bottom nav
+      document.querySelectorAll('.bottom-nav-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      const activeBottomItem = Array.from(document.querySelectorAll('.bottom-nav-item')).find(item =>
+        item.textContent.toLowerCase().includes(pageName.toLowerCase())
+      );
+      if (activeBottomItem) activeBottomItem.classList.add('active');
+
+      // Close nav menu on mobile
+      document.getElementById('navbarToggle')?.classList.remove('active');
+      document.getElementById('navbarMenu')?.classList.remove('active');
+
+      // Initialize page-specific features
+      if (pageName === 'detect' && !cameraManager) {
+        initializeCamera();
+      } else if (pageName === 'history') {
+        loadHistory();
+      } else if (pageName === 'map') {
+        initializeMap();
+      }
+
+      scrollTo(0, 0);
+    }
+
+    // ============================================
+    // CAMERA & DETECTION (IMPROVED FOR ANDROID)
+    // ============================================
+
+    let cameraManager = null;
+    let lastDetectionResult = null;
+
+    async function initializeCamera() {
+      try {
+        const video = document.getElementById('cameraFeed');
+
+        // Request camera permission with proper constraints for mobile
+        const constraints = {
+          video: {
+            facingMode: { ideal: 'environment' },
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          },
+          audio: false
+        };
+
+        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        video.srcObject = stream;
+        video.addEventListener('loadedmetadata', () => {
+          video.play().catch(e => console.error('Play error:', e));
+        });
+
+        cameraManager = { stream, video };
+        document.getElementById('permissionStatus').classList.remove('show');
+        console.log('✅ Kamera berhasil diaktifkan');
+      } catch (error) {
+        console.error('❌ Camera error:', error);
+        let errorMsg = 'Gagal mengakses kamera. ';
+
+        if (error.name === 'NotAllowedError') {
+          errorMsg += 'Silakan izinkan akses kamera di pengaturan browser.';
+        } else if (error.name === 'NotFoundError') {
+          errorMsg += 'Tidak ada perangkat kamera ditemukan.';
+        } else if (error.name === 'NotReadableError') {
+          errorMsg += 'Kamera sedang digunakan aplikasi lain. Tutup aplikasi lain dan coba lagi.';
+        } else {
+          errorMsg += error.message;
+        }
+
+        document.getElementById('permissionStatus').classList.add('show');
+        document.getElementById('permissionMessage').textContent = errorMsg;
+      }
+    }
+
+    async function requestCameraPermission() {
+      await initializeCamera();
+    }
+
+    async function switchCamera() {
+      try {
+        if (!cameraManager) {
+          showError('Kamera belum diinisialisasi');
+          return;
+        }
+
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const cameras = devices.filter(d => d.kind === 'videoinput');
+
+        if (cameras.length <= 1) {
+          showError('Hanya satu kamera tersedia');
+          return;
+        }
+
+        cameraManager.stream?.getTracks().forEach(t => t.stop());
+
+        const constraints = {
+          video: {
+            facingMode: { ideal: 'user' }, // Toggle between user and environment
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          },
+          audio: false
+        };
+
+        const newStream = await navigator.mediaDevices.getUserMedia(constraints);
+        document.getElementById('cameraFeed').srcObject = newStream;
+        cameraManager.stream = newStream;
+        showSuccess('Kamera berhasil diubah');
+      } catch (error) {
+        console.error('Switch camera error:', error);
+        showError('Gagal mengubah kamera: ' + error.message);
+      }
+    }
+
+    function captureImage() {
+      if (!cameraManager) {
+        showError('Kamera belum diinisialisasi');
+        return;
+      }
+
+      try {
+        const video = document.getElementById('cameraFeed');
+        const canvas = document.createElement('canvas');
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0);
+
+        // Simulate detection with dummy data
+        const detectionResult = simulateDetection();
+        displayDetectionResult(detectionResult, canvas.toDataURL());
+      } catch (error) {
+        console.error('Capture error:', error);
+        showError('Gagal menangkap foto: ' + error.message);
+      }
+    }
+
+    function simulateDetection() {
+      const samples = WASTE_DATABASE;
+      const randomWaste = samples[Math.floor(Math.random() * samples.length)];
+      return {
+        waste: randomWaste,
+        confidence: Math.floor(Math.random() * 30) + 70
+      };
+    }
+
+    function displayDetectionResult(result, imageData) {
+      const resultsSection = document.getElementById('resultsSection');
+      const resultImage = document.getElementById('resultImage');
+      const wasteName = document.getElementById('wasteName');
+      const confidenceFill = document.getElementById('confidenceFill');
+      const confidenceText = document.getElementById('confidenceText');
+      const wasteDescription = document.getElementById('wasteDescription');
+      const wasteManagement = document.getElementById('wasteManagement');
+      const wasteRecycling = document.getElementById('wasteRecycling');
+      const wasteTips = document.getElementById('wasteTips');
+
+      resultImage.src = imageData;
+      wasteName.textContent = result.waste.name;
+      wasteName.style.color = result.waste.color;
+      confidenceFill.style.width = result.confidence + '%';
+      confidenceText.textContent = result.confidence + '%';
+      wasteDescription.textContent = result.waste.description;
+      wasteManagement.innerHTML = `<p>${result.waste.pengelolaan}</p>`;
+      wasteRecycling.innerHTML = `<p>${result.waste.daur_ulang}</p>`;
+      wasteTips.innerHTML = result.waste.tips
+        .map(tip => `<li>${tip}</li>`)
+        .join('');
+
+      resultsSection.style.display = 'block';
+      lastDetectionResult = { ...result, imageData };
+    }
+
+    function resetDetection() {
+      document.getElementById('resultsSection').style.display = 'none';
+      if (cameraManager) {
+        document.getElementById('cameraFeed').play();
+      }
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById(`${tabName}-tab`).classList.add('active');
+    }
+
+    function saveHistory() {
+      if (!lastDetectionResult) {
+        showError('Tidak ada hasil deteksi untuk disimpan');
+        return;
+      }
+
+      const historyData = {
+        id: generateUUID(),
+        timestamp: new Date().toISOString(),
+        ...lastDetectionResult
+      };
+
+      let history = JSON.parse(localStorage.getItem('ecohistory') || '[]');
+      history.push(historyData);
+      localStorage.setItem('ecohistory', JSON.stringify(history));
+      showSuccess('Riwayat berhasil disimpan');
+    }
+
+    function shareResult() {
+      if (!lastDetectionResult) {
+        showError('Tidak ada hasil untuk dibagikan');
+        return;
+      }
+
+      const text = `Saya baru saja mendeteksi ${lastDetectionResult.waste.name} (akurasi ${lastDetectionResult.confidence}%) menggunakan Eco Innovation App! 🌱`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Eco Innovation',
+          text: text
+        }).catch(err => console.log('Share cancelled:', err));
+      } else {
+        alert(text);
+      }
+    }
+
+    // ============================================
+    // HISTORY
+    // ============================================
+
+    let historyData = [];
+
+    function loadHistory() {
+      historyData = JSON.parse(localStorage.getItem('ecohistory') || '[]');
+      updateHistoryDisplay();
+      updateStats();
+    }
+
+    function updateHistoryDisplay(dataToShow = historyData) {
+      const historyList = document.getElementById('historyList');
+      const emptyState = document.getElementById('emptyState');
+
+      if (dataToShow.length === 0) {
+        historyList.innerHTML = '';
+        emptyState.classList.add('show');
+      } else {
+        emptyState.classList.remove('show');
+        historyList.innerHTML = dataToShow.map(item => `
+          <div class="history-item">
+            <div class="history-item-image">
+              ${item.imageData ? `<img src="${item.imageData}" alt="${item.waste.name}">` : '<div class="image-placeholder">📷</div>'}
+            </div>
+            <div class="history-item-content">
+              <div class="history-item-header">
+                <h4 class="history-item-title">${item.waste.name}</h4>
+                <span class="history-item-confidence">${item.confidence}%</span>
+              </div>
+              <div class="history-item-meta">
+                <span class="history-item-category" style="background-color: ${item.waste.color}">
+                  ${item.waste.category}
+                </span>
+                <span class="history-item-date">${formatDate(item.timestamp, 'time')}</span>
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem;">
+              <button class="btn-icon" onclick="viewDetail('${item.id}')" title="Lihat Detail">👁️</button>
+              <button class="btn-icon" onclick="deleteItem('${item.id}')" title="Hapus">🗑️</button>
+            </div>
+          </div>
+        `).join('');
+      }
+    }
+
+    function searchHistory() {
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const filtered = historyData.filter(item =>
+        item.waste.name.toLowerCase().includes(query) ||
+        item.waste.category.toLowerCase().includes(query)
+      );
+      updateHistoryDisplay(filtered);
+    }
+
+    function filterByType() {
+      const category = document.getElementById('wasteTypeFilter').value;
+      const filtered = category === ''
+        ? historyData
+        : historyData.filter(item => item.waste.category === category);
+      updateHistoryDisplay(filtered);
+    }
+
+    function sortHistory() {
+      const sortBy = document.getElementById('sortBy').value;
+      const sorted = [...historyData];
+
+      switch(sortBy) {
+        case 'newest':
+          sorted.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+          break;
+        case 'oldest':
+          sorted.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+          break;
+        case 'alphabetical':
+          sorted.sort((a, b) => a.waste.name.localeCompare(b.waste.name));
+          break;
+        case 'highest-confidence':
+          sorted.sort((a, b) => b.confidence - a.confidence);
+          break;
+      }
+
+      updateHistoryDisplay(sorted);
+    }
+
+    function viewDetail(itemId) {
+      const item = historyData.find(i => i.id === itemId);
+      if (!item) return;
+
+      const modal = document.getElementById('detailModal');
+      const modalBody = document.getElementById('modalBody');
+
+      modalBody.innerHTML = `
+        <h3>${item.waste.icon} ${item.waste.name}</h3>
+        ${item.imageData ? `<img src="${item.imageData}" style="width: 100%; border-radius: 8px; margin: 1rem 0;">` : ''}
+        <p><strong>Kategori:</strong> ${item.waste.category}</p>
+        <p><strong>Akurasi:</strong> ${item.confidence}%</p>
+        <p><strong>Tanggal:</strong> ${formatDate(item.timestamp, 'time')}</p>
+        <h4>Deskripsi</h4>
+        <p>${item.waste.description}</p>
+        <h4>Cara Pengelolaan</h4>
+        <p>${item.waste.pengelolaan}</p>
+        <h4>Daur Ulang</h4>
+        <p>${item.waste.daur_ulang}</p>
+        <h4>Tips</h4>
+        <ul>${item.waste.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+      `;
+
+      modal.classList.add('show');
+    }
+
+    function deleteItem(itemId) {
+      if (!confirm('Hapus item ini?')) return;
+      historyData = historyData.filter(i => i.id !== itemId);
+      localStorage.setItem('ecohistory', JSON.stringify(historyData));
+      updateHistoryDisplay();
+      updateStats();
+    }
+
+    function deleteAllHistory() {
+      if (!confirm('Hapus SEMUA riwayat? Tindakan ini tidak dapat dibatalkan.')) return;
+      historyData = [];
+      localStorage.removeItem('ecohistory');
+      updateHistoryDisplay();
+      updateStats();
+    }
+
+    function exportHistory() {
+      exportToJSON(historyData, `eco-history-${Date.now()}.json`);
+    }
+
+    function updateStats() {
+      const totalScans = historyData.length;
+      const co2Saved = (totalScans * 0.5).toFixed(1);
+      let level = 'Pemula';
+      if (totalScans >= 5) level = 'Ramah Lingkungan';
+      if (totalScans >= 15) level = 'Eco Warrior';
+      if (totalScans >= 30) level = 'Green Champion';
+
+      document.getElementById('totalScansUser').textContent = totalScans;
+      document.getElementById('totalRecycled').textContent = totalScans;
+      document.getElementById('co2Saved').textContent = co2Saved + ' kg';
+      document.getElementById('userLevel').textContent = level;
+    }
+
+    // ============================================
+    // MAP
+    // ============================================
+
+    const LOCATIONS = [
+      {
+        id: 1,
+        name: 'TPS Kelurahan Merdeka',
+        address: 'Jl. Merdeka No. 123, Jakarta',
+        phone: '021-1234567',
+        type: 'tps',
+        hours: '06:00 - 18:00',
+        rating: 4.5,
+        latitude: -6.2088,
+        longitude: 106.8456
+      },
+      {
+        id: 2,
+        name: 'Bank Sampah Hijau Bangkit',
+        address: 'Jl. Sudirman No. 456, Jakarta',
+        phone: '021-2345678',
+        type: 'bank',
+        hours: '08:00 - 17:00',
+        rating: 4.8,
+        latitude: -6.2165,
+        longitude: 106.8272
+      },
+      {
+        id: 3,
+        name: 'Pusat Daur Ulang Bersama',
+        address: 'Jl. Ahmad Yani No. 789, Jakarta',
+        phone: '021-3456789',
+        type: 'recycle',
+        hours: '07:00 - 19:00',
+        rating: 4.6,
+        latitude: -6.1753,
+        longitude: 106.8294
+      }
+    ];
+
+    let mapInstance = null;
+    let userLocation = null;
+    let selectedLocation = null;
+
+    function initializeMap() {
+      const mapDiv = document.getElementById('map');
+      if (!mapDiv || mapInstance) return;
+
+      // Google Maps is not loaded, show demo instead
+      displayLocationList(LOCATIONS);
+    }
+
+    function getLocationAndShowMap() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            userLocation = {
+              lat: pos.coords.latitude,
+              lng: pos.coords.longitude
+            };
+            updateMap();
+            showSuccess('Lokasi ditemukan!');
+          },
+          err => showError('Gagal mendapatkan lokasi: ' + err.message)
+        );
+      } else {
+        showError('Geolocation tidak didukung browser Anda');
+      }
+    }
+
+    function updateMap() {
+      const typeFilter = document.getElementById('locationTypeFilter').value;
+      const radius = parseInt(document.getElementById('radiusFilter').value || 5);
+
+      let filtered = LOCATIONS;
+
+      if (typeFilter) {
+        filtered = filtered.filter(loc => loc.type === typeFilter);
+      }
+
+      if (userLocation) {
+        filtered = filtered
+          .map(loc => ({
+            ...loc,
+            distance: calculateDistance(userLocation.lat, userLocation.lng, loc.latitude, loc.longitude)
+          }))
+          .filter(loc => loc.distance <= radius)
+          .sort((a, b) => a.distance - b.distance);
+      }
+
+      displayLocationList(filtered);
+    }
+
+    function displayLocationList(locations) {
+      const listContainer = document.getElementById('locationList');
+      if (!listContainer) return;
+
+      if (locations.length === 0) {
+        listContainer.innerHTML = '<p style="text-align: center; padding: 2rem;">Tidak ada lokasi dalam radius ini</p>';
+        return;
+      }
+
+      listContainer.innerHTML = locations.map((loc, idx) => `
+        <div class="location-item" onclick="showLocationDetail(${idx})">
+          <div class="location-number">${idx + 1}</div>
+          <div class="location-info">
+            <h4>${loc.name}</h4>
+            <p class="location-type">${loc.type === 'tps' ? 'TPS' : loc.type === 'bank' ? 'Bank Sampah' : 'Daur Ulang'}</p>
+            <p>📍 ${loc.address}</p>
+            ${loc.distance ? `<p>📏 ${loc.distance.toFixed(1)} km</p>` : ''}
+            <p>⭐ ${loc.rating}</p>
+          </div>
+        </div>
+      `).join('');
+
+      // Store locations for detail view
+      window.displayedLocations = locations;
+    }
+
+    function showLocationDetail(index) {
+      const locations = window.displayedLocations || LOCATIONS;
+      const location = locations[index];
+      if (!location) return;
+
+      selectedLocation = location;
+
+      document.getElementById('modalLocationName').textContent = location.name;
+      document.getElementById('modalLocationAddress').textContent = location.address;
+      document.getElementById('modalLocationPhone').textContent = location.phone || '-';
+      document.getElementById('modalLocationHours').textContent = location.hours || '-';
+      document.getElementById('modalLocationType').textContent =
+        location.type === 'tps' ? 'TPS' : location.type === 'bank' ? 'Bank Sampah' : 'Daur Ulang';
+      document.getElementById('modalLocationRating').textContent = location.rating + ' ⭐';
+
+      if (userLocation) {
+        const distance = calculateDistance(userLocation.lat, userLocation.lng, location.latitude, location.longitude);
+        document.getElementById('modalLocationDistance').textContent = distance.toFixed(1) + ' km';
+      }
+
+      document.getElementById('locationModal').classList.add('show');
+    }
+
+    function navigateToLocation() {
+      if (!selectedLocation) return;
+      const url = `https://www.google.com/maps/dir/?api=1&destination=${selectedLocation.latitude},${selectedLocation.longitude}`;
+      window.open(url, '_blank');
+    }
+
+    function callLocation() {
+      if (!selectedLocation || !selectedLocation.phone) return;
+      window.location.href = `tel:${selectedLocation.phone}`;
+    }
+
+    // ============================================
+    // USER MENU
+    // ============================================
+
+    function setupUserMenu() {
+      document.getElementById('userBtnToggle').addEventListener('click', () => {
+        document.getElementById('userDropdown').classList.toggle('active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('[id*="User"]')) {
+          document.getElementById('userDropdown').classList.remove('active');
+        }
+      });
+    }
+
+    function showLoginModal() {
+      const modal = document.createElement('div');
+      modal.className = 'modal show';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <button class="modal-close" onclick="this.closest('.modal').remove()">&times;</button>
+          <h3>Login / Register</h3>
+          <p style="margin-top: 1rem; color: #999;">
+            Fitur login memerlukan Firebase. Silakan setup Firebase terlebih dahulu.
+          </p>
+          <p style="margin-top: 1rem;">Saat ini Anda dapat menyimpan riwayat scan secara lokal di browser Anda.</p>
+          <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="this.closest('.modal').remove()">Tutup</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+    }
+
+    function showProfileModal() {
+      showLoginModal();
+    }
+
+    function logoutUser() {
+      showSuccess('Logout berhasil');
+    }
+
+    // ============================================
+    // INITIALIZATION
+    // ============================================
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setupUserMenu();
+
+      // Setup navbar toggle
+      document.getElementById('navbarToggle').addEventListener('click', () => {
+        document.getElementById('navbarToggle').classList.toggle('active');
+        document.getElementById('navbarMenu').classList.toggle('active');
+      });
+
+      // Setup modal closes
+      document.addEventListener('click', (e) => {
+        if (e.target.className === 'modal show') {
+          e.target.classList.remove('show');
+        }
+      });
+
+      // Show HTTPS warning for mobile devices not on HTTPS/localhost
+      if (isMobileDevice() && !isHTTPS() && !isLocalhost()) {
+        document.getElementById('httpsWarning').classList.add('show');
+      }
+
+      // Initialize first page
+      switchPage('home');
+
+      console.log('✅ App initialized successfully');
+      console.log('Device:', isMobileDevice() ? 'Mobile' : 'Desktop');
+      console.log('Protocol:', isHTTPS() ? 'HTTPS ✅' : isLocalhost() ? 'Localhost ✅' : 'HTTP ⚠️');
+    });
+  </script>
+</body>
+</html>
